@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+:root {
+    --primary-background-color: #f8f8f8;
+
+    --primary-text-color: #111111;
+    --light-text-color: #f0f0f0;
+
+    --primary-theme-color: #6161e3;
+    --dark-theme-color: #35355b;
+
+    --shadow: 2px 2px 10px rgba(0,0,0,0.2);
+}
+
+body {
+    background-color: var(--primary-background-color);
+    color: var(--primary-text-color);
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+}
+
+.wrapper {
+    position: relative;
+    width: calc(100% - 3em);
+    max-width: 60em;
+    margin: 0 auto;
+}
+
+a {
+    color: var(--primary-theme-color);
+}
+
+header {
+    background-color: var(--dark-theme-color);
+    color: var(--light-text-color);
+    height: 3.5em;
+    text-shadow: var(--shadow);
+    box-shadow: var(--shadow);
+}
+
+header .wrapper {
+    height: 3.5em;
+}
+
+header a {
+    color: var(--light-text-color);
+    text-decoration: none;
+}
+
+header .logo {
+    font-size: 1.75em;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+nav {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+nav a {
+    display: block;
+    height: 1em;
+    padding: 1.25em 1.5em;
+    transition: 250ms;
+}
+
+nav a:hover,
+nav a:focus {
+    background-color: var(--primary-theme-color);
+}
