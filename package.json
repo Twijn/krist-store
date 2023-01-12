@@ -20,9 +20,16 @@
   },
   "homepage": "https://github.com/Twijn/krist-store#readme",
   "dependencies": {
+    "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
+    "discord.js": "^14.7.1",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
+    "express-ws": "^5.0.2",
     "jquery": "^3.6.3",
-    "mysql": "^2.18.1"
+    "krist": "^2.0.1",
+    "mysql": "^2.18.1",
+    "node-fetch": "^3.3.0",
+    "websocket": "^1.0.34"
   }
 }

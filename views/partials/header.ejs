@@ -1,9 +1,13 @@
-<header>
+<% active = locals.active ? active : "home" %><header>
     <div class="wrapper">
-        <a href="/" class="logo">krist<span style="color:var(--primary-theme-color);">ore</span></a>
+        <a href="/" class="logo">kri<span class="transition">st</span><span style="color:var(--primary-theme-color);">ore</span></a>
 
         <nav>
-            <a href="/">View Items</a>
+            <a href="/"<%- (active === "home" ? ' class="active"' : '') %>><i class="fa-solid fa-house-user"></i> Homepage</a><!--
+        --><a href="/item/all"<%- (active === "items" ? ' class="active"' : '') %>><i class="fa-solid fa-boxes-stacked"></i> Items</a><!--
+        --><a href="/shop/all"<%- (active === "shops" ? ' class="active"' : '') %>><i class="fa-solid fa-shop"></i> Shops</a><!--<% if (!locals.user) { %>
+        --><a href="/login"<%- (active === "login" ? ' class="active"' : '') %>><i class="fa-solid fa-right-to-bracket"></i> Login</a><% } else { %>
+        --><a href="/account" class="account<%- (active === "account" ? ' active' : '') %>"><img src="<%= user.avatar %>" alt="Avatar for <%= user.discord.name %>"></a><% } %>
         </nav>
     </div>
 </header>

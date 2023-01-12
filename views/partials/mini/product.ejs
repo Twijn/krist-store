@@ -1,0 +1,6 @@
+<div class="card product">
+    <i class="fa-duotone fa-box" style="color: <%= product.shop.themeColor %>;"></i>
+    <h3><%= product.displayName %></h3>
+    <small><%= product.name %></small>
+    <code><% if (product.price > 1) { %><%= product.price %> kst per item<% } else { %><%= product.getItemsPerKST() %> items per 1 kst<% } %></code>
+</div>

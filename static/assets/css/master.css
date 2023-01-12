@@ -1,15 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Ubuntu:wght@300;400&display=swap');
 
 :root {
     --primary-background-color: #f8f8f8;
 
     --primary-text-color: #111111;
+    --secondary-text-color: #2d2d2d;
     --light-text-color: #f0f0f0;
 
     --primary-theme-color: #6161e3;
     --dark-theme-color: #35355b;
 
     --shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    --light-shadow: 2px 2px 10px rgba(0,0,0,0.1);
 }
 
 body {
@@ -32,16 +34,21 @@ a {
     color: var(--primary-theme-color);
 }
 
+.krist-icon {
+    vertical-align: middle;
+    color: var(--secondary-text-color);
+}
+
 header {
     background-color: var(--dark-theme-color);
     color: var(--light-text-color);
-    height: 3.5em;
+    height: 3em;
     text-shadow: var(--shadow);
     box-shadow: var(--shadow);
 }
 
 header .wrapper {
-    height: 3.5em;
+    height: 3em;
 }
 
 header a {
@@ -57,6 +64,14 @@ header .logo {
     transform: translateY(-50%);
 }
 
+header .logo .transition {
+    transition: 200ms;
+}
+
+header .logo:hover .transition {
+    color: var(--primary-theme-color);
+}
+
 nav {
     display: flex;
     position: absolute;
@@ -68,11 +83,135 @@ nav {
 nav a {
     display: block;
     height: 1em;
-    padding: 1.25em 1.5em;
+    padding: 1em;
     transition: 250ms;
 }
 
 nav a:hover,
-nav a:focus {
+nav a:focus,
+nav a.active {
     background-color: var(--primary-theme-color);
+}
+
+nav a svg {
+    display: block;
+    margin-right: .2em;
+}
+
+nav a.account {
+    height: 2em;
+    padding: .5em;
+}
+
+nav a.account img {
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    font-weight: 300;
+}
+
+.card {
+    background-color: white;
+    color: var(--primary-text-color);
+    max-width: 12em;
+    padding: .8em 1em;
+    border-radius: .25em;
+    margin: .5em;
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    box-shadow: var(--light-shadow);
+    text-decoration: none;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.card code {
+    display: block;
+}
+
+.card img {
+    border-radius: 50%;
+}
+
+.card h2,
+.card h3,
+.card h4 {
+    font-size: 1.2em;
+    font-weight: 500;
+    margin: .4em 0 .2em 0;
+}
+
+.card > svg {
+    font-size: 7em;
+    opacity: .6;
+}
+
+.card .footer {
+    font-size: .8em;
+    color: var(--secondary-text-color);
+}
+
+.button {
+    background-color: var(--primary-theme-color);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: .4em .6em;
+    border-radius: .2em;
+    border: none;
+    transition: 200ms background-color;
+    box-shadow: var(--light-shadow);
+}
+
+.button.button-right {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.button svg {
+    margin-right: .2em;
+}
+
+code {
+    background-color: var(--primary-background-color);
+    padding: .2em;
+    border-radius: .1em;
+}
+
+.section {
+    background-color: white;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    margin: .4em;
+    padding: .8em;
+    border-radius: .3em;
+}
+
+.section h2,
+.section h3 {
+    font-size: 1.05em;
+    font-weight: 500;
+    color: var(--secondary-text-color);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 0 .8em .8em .8em;
+    margin: 0 -.8em .8em -.8em;
+}
+
+.inline-avatar {
+    display: inline-block;
+    height: 1.1em;
+    vertical-align: bottom;
 }

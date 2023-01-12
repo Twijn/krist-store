@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>krist.store - View Shop: <%= shop.name %></title>
+
+<%- include("../../partials/css") %>
+
+    <link rel="stylesheet" href="/assets/css/shop.css">
+</head>
+<body>
+
+<%- include("../../partials/header", {active: "shops", user: user}) %>
+
+<div class="theme" style="background-color: <%- shop.themeColor %>;"></div>
+
+<main>
+    <div class="wrapper">
+        <section class="shop-header">
+            <h1><%= shop.name %></h1>
+            <% if (shop.tagline && shop.tagline !== "") { %>
+            <p>
+                <code><%= shop.tagline %></code>
+            </p>
+            <% } %>
+            <p>
+                Shop owned by <% if (shop.owner.minecraft.uuid !== null) { %><img class="inline-avatar" src="<%= shop.owner.minecraft.getHeadRenderURI() %>" alt="Minecraft avatar for <%= shop.owner.minecraft.username %>"><%= shop.owner.minecraft.username %><% } else { %><img class="inline-avatar" src="<%= shop.owner.getAvatar() %>" alt="Discord avatar for <%= shop.owner.discord.name %>"><%= shop.owner.discord.name %><% } %>
+
+                <a href="<%= shop.owner.discord.getDMLink() %>" target="__blank"><small>Send a discord DM to the shop owner, @<%= shop.owner.discord.name %>#<%= shop.owner.discord.discriminator %></small></a>
+            </p>
+            <% if (shop.location?.x) { %>
+            <p>
+                This shop is located in SwitchCraft at <code><%= shop.location.x %>, <%= shop.location.y %>, <%= shop.location.z %></code>
+
+                <a href="https://dynmap.sc3.io/?worldname=SwitchCraft&zoom=6&x=<%= shop.location.x %>&y=<%= shop.location.y %>&z=<%= shop.location.z %>" target="__blank"><small>See it on DynMap</small></a>
+            </p>
+            <% } %>
+        </section>
+
+        <section>
+            <h2>Products</h2>
+
+            <% products.forEach(product => { %>
+                <%- include("../../partials/mini/product", {product: product}) %>
+            <% }) %>
+        </section>
+    </div>
+</main>
+
+<%- include("../../partials/js") %>
+
+</body>
+</html>

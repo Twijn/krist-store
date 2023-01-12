@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>krist.store - View Account: <%= user.discord.name %></title>
+
+<%- include("../../partials/css") %>
+
+    <link rel="stylesheet" href="/assets/css/account.css">
+</head>
+<body>
+
+<%- include("../../partials/header", {active: "account", user: user}) %>
+
+<main>
+    <div class="wrapper">
+        <h1>Hello, <%= user.discord.name %>!</h1>
+
+        <section>
+            <h2>Accounts</h2>
+            <div class="accounts">
+                <a class="card account" href="https://lookup.guru/<%= user.discord.id %>" target="__blank">
+                    <img src="<%= user.avatar %>" alt="Discord profile picture for <%= user.discord.name %>">
+                    <h3><%= user.discord.name %>#<%= user.discord.discriminator %></h3>
+                    <code><%= user.discord.id %></code>
+                </a>
+                <% if (user.minecraft.username) { %>
+                <a class="card account" href="https://laby.net/@<%= user.minecraft.uuid %>" target="__blank">
+                    <img src="https://crafatar.com/renders/head/<%= user.minecraft.uuid %>" alt="Minecraft head render for <%= user.minecraft.username %>">
+                    <h3><%= user.minecraft.username %></h3>
+                </a>
+                <% } else { %>
+                <div class="card account">
+                    <i class="fa-regular fa-link"></i>
+                    <h3>Link Minecraft</h3>
+                    <code title="Run this command in the SwitchCraft server">\klink <%= code %></code>
+                </div>
+                <% } %>
+            </div>
+        </section>
+        <section>
+            <h2>Shops <a href="/shop/add" class="button button-right"><i class="fa-solid fa-plus"></i> Add a Shop</a></h2>
+            <div class="shops">
+                <% shops.forEach(shop => { %>
+
+                <% }) %>
+                <a class="card shop" href="/shop/add">
+                    <i class="fa-regular fa-circle-plus"></i>
+                    <h3>Add Shop</h3>
+                    <code>Add a new shop!</code>
+                </a>
+            </div>
+        </section>
+    </div>
+</main>
+
+<%- include("../../partials/js") %>
+
+</body>
+</html>

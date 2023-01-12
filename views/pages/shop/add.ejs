@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>krist.store - View Shops</title>
+
+<%- include("../../partials/css") %>
+
+    <link rel="stylesheet" href="/assets/css/form.css">
+    <link rel="stylesheet" href="/assets/css/grid.css">
+</head>
+<body>
+
+<%- include("../../partials/header", {active: "shops", user: user}) %>
+
+<main>
+    <form class="wrapper" method="post" action="/shop/add">
+        <h2>Add a Shop</h2>
+
+        <div class="container container-md">
+            <section class="section col-7">
+                <h3><i class="fa-regular fa-circle-info"></i> General Information</h3>
+    
+                <label class="form-input">
+                    Shop Name <span class="required">*</span>
+                    <input type="text" name="name" id="name" minlength="3" maxlength="64" placeholder="Twijn's General Store" required="required"<% if (locals.values?.name) { %> value="<%= locals.values.name %>"<% } %>/>
+                    <% if (locals.errors?.name) { %><small class="error post-error"><%= locals.errors.name %></small><% } %>
+                </label>
+    
+                <label class="form-input">
+                    Shop Link <span class="required">*</span>
+                    <input type="text" name="link" id="link" minlength="3" maxlength="16" placeholder="generalstore" required="required"<% if (locals.values?.link) { %> value="<%= locals.values.link %>"<% } %>/>
+                    <small id="link-preview" style="display:none;">Your shop link will look like <%= domain %>shop/<span></span></small>
+                    <small id="invalid-chars" class="error" style="display:none;">Invalid characters. Only lowercase letters (a-z) and numbers (0-9) are allowed</small>
+                    <small id="link-exists" class="error" style="display:none;">This link already exists!</small>
+                    <% if (locals.errors?.link) { %><small class="error post-error"><%= locals.errors.link %></small><% } %>
+                </label>
+                
+                <label class="form-input">
+                    Tagline
+                    <input type="text" name="tagline" id="tagline" minlength="0" maxlength="128" placeholder="Something clever!"<% if (locals.values?.tagline) { %> value="<%= locals.values.tagline %>"<% } %>/>
+                    <% if (locals.errors?.tagline) { %><small class="error post-error"><%= locals.errors.tagline %></small><% } %>
+                </label>
+                
+                <label class="form-input">
+                    Krist Name
+                    <input type="text" name="kristName" id="krist-name" minlength="0" maxlength="64" placeholder="twijn.kst"<% if (locals.values?.kristName) { %> value="<%= locals.values.kristName %>"<% } %>/>
+                    <small><i class="fa-regular fa-circle-info"></i> This address is never used by <code>krist.store</code>, but may be utilized for configuring other shop software.</small>
+                    <% if (locals.errors?.kristName) { %><small class="error post-error"><%= locals.errors.kristName %></small><% } %>
+                </label>
+                
+                <label class="form-input">
+                    Theme Color <span class="required">*</span>
+                    <input type="color" name="themeColor" id="theme-color" value="<% if (locals.values?.themeColor) { %><%= locals.values.themeColor %><% } else { %>#ffffff<% } %>" placeholder="#ffffff"/>
+                    <% if (locals.errors?.themeColor) { %><small class="error post-error"><%= locals.errors.themeColor %></small><% } %>
+                </label>
+            </section>
+            <section class="section col-5">
+                <h3><i class="fa-regular fa-money-bill"></i> Payout Information</h3>
+    
+                <label class="form-input">
+                    Payout Address <span class="required">*</span>
+                    <input type="text" name="payoutAddress" id="payout-address" value="<%= user.minecraft.username.toLowerCase() %>@switchcraft.kst" required="required"/>
+                    <small><i class="fa-regular fa-circle-info"></i> For security purposes, the payout address can't be changed after initially set.</small>
+                    <% if (locals.errors?.payoutAddress) { %><small class="error post-error"><%= locals.errors.payoutAddress %></small><% } %>
+                </label>
+
+                <div class="container container-sm">
+                    <label class="form-input col-7" id="pf-select">
+                        Payout Frequency <span class="required">*</span>
+                        <select name="payoutFrequency" id="payout-frequency">
+                            <option value="payout"<% if (!locals.values?.payoutFrequency || locals.values.payoutFrequency === "payout") { %> selected="selected"<% } %>>Once payout amount reaches x</option>
+                            <option value="transaction"<% if (locals.values?.payoutFrequency && locals.values.payoutFrequency === "transaction") { %> selected="selected"<% } %>>Per transaction</option>
+                            <option value="daily"<% if (locals.values?.payoutFrequency && locals.values.payoutFrequency === "daily") { %> selected="selected"<% } %>>Daily</option>
+                        </select>
+                    </label>
+                    <label class="form-input col-5" style="margin-left: 1em;" id="pf-input">
+                        Payout Setpoint <span class="required">*</span>
+                        <input type="number" name="payoutSetpoint" id="payout-setpoint" value="<% if (locals.values?.payoutSetpoint) { %><%= locals.values.payoutSetpoint %><% } else { %>100<% } %>" step="1"/>
+                    </label>
+                </div>
+                <% if (locals.errors?.payoutFrequency) { %><small class="error post-error"><%= locals.errors.payoutFrequency %></small><% } %>
+            </section>
+        </div>
+
+        <div class="container container-md">
+            <section class="section col-12">
+                <h3><i class="fa-regular fa-circle-plus"></i> Add Shop</h3>
+    
+                <input type="submit" class="button" value="Add Shop">
+            </section>
+        </div>
+    </form>
+</main>
+
+<%- include("../../partials/js") %>
+
+<script src="/assets/js/shopadd.js"> </script>
+
+</body>
+</html>

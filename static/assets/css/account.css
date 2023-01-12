@@ -1,0 +1,8 @@
+.card > img {
+    width: 128px;
+}
+
+.accounts {
+    display: flex;
+    align-items: flex-start;
+}

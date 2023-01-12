@@ -4,27 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>krist.store</title>
+    <title>krist.store - View Items</title>
 
-<%- include("../partials/css") %>
+<%- include("../../partials/css") %>
 
 </head>
 <body>
 
-<%- include("../partials/header", {active: "home", user: user}) %>
+<%- include("../../partials/header", {active: "items", user: user}) %>
 
 <main>
     <div class="wrapper">
         <section>
-            <h2>Top Shops</h2>
-        </section>
-        <section>
-            <h2>Top Items</h2>
+            <h2>Items</h2>
         </section>
     </div>
 </main>
 
-<%- include("../partials/js") %>
+<%- include("../../partials/js") %>
 
 </body>
 </html>

@@ -1,0 +1,14 @@
+<a class="card shop" href="/shop/<%= shop.link %>">
+    <i class="fa-duotone fa-shop" style="color: <%= shop.themeColor %>;"></i>
+    <h3>
+        <%= shop.name %>
+    </h3>
+    <% if (shop.tagline && shop.tagline !== "") { %>
+    <code><%= shop.tagline %></code>
+    <% } %>
+    <% if (locals.showFooter) { %>
+    <div class="footer">
+        Shop owned by <% if (shop.owner.minecraft?.uuid) { %><img class="inline-avatar" src="<%= shop.owner.minecraft.getHeadRenderURI() %>" alt="Minecraft head avatar for <%= shop.owner.minecraft.username %>" /> <%= shop.owner.minecraft.username %><% } else { %><% } %>
+    </div>
+    <% } %>
+</a>
