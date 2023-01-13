@@ -17,6 +17,10 @@
     <div class="wrapper">
         <section>
             <h2>Shops</h2>
+
+            <% shops.forEach(shop => { %>
+                <%- include("../../partials/mini/shop", {shop: shop, showFooter: true}) %>
+            <% }) %>
         </section>
     </div>
 </main>

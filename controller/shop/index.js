@@ -15,12 +15,24 @@ const NAME_REGEX = /^[a-z0-9]+.kst$/;
 const NAME_WITH_META_REGEX = /^[A-Za-z0-9]+@[a-z0-9]+.kst$/;
 
 router.get("/all", (req, res) => {
-    res.render("pages/shop/all", {user: req.user});
+    let page = req.query.page && !isNaN(req.query.page) ? Number(req.query.page) : 1;
+    if (page < 1) page = 1;
+
+    api.getShops().then(shops => {
+        res.render("pages/shop/all", {user: req.user, shops: shops});
+    }, err => {
+        console.error(err);
+        res.send("An error occurred");
+    })
 });
 
 router.get("/add", (req, res) => {
     if (req.user) {
-        res.render("pages/shop/add", {user: req.user, domain: config.domain.replace("http://", "").replace("https://", "")});
+        if (req.user.minecraft?.uuid) {
+            res.render("pages/shop/add", {user: req.user, domain: config.domain.replace("http://", "").replace("https://", "")});
+        } else {
+            res.redirect("/account");
+        }
     } else {
         res.redirect("/login");
     }
@@ -70,6 +82,11 @@ router.post("/add", async (req, res) => {
 
     if (!req.user) {
         res.redirect("/login");
+        return;
+    }
+
+    if (!req.user.minecraft?.uuid) {
+        res.send("You must have a Minecraft account linked");
         return;
     }
 

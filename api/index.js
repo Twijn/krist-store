@@ -53,6 +53,37 @@ class API {
     }
 
     /**
+     * Returns shops with pagination options
+     * @param {number} page default: 1
+     * @param {number} perPage default: 25
+     * @returns {Promise<Shop[]>}
+     */
+    getShops(page = 1, perPage = 25) {
+        return new Promise((resolve, reject) => {
+            con.query("select id from shop limit ?, ?;", [(page - 1) * perPage, perPage], async (err, res) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    try {
+                        let shops = [];
+    
+                        for (let i = 0; i < res.length; i++) {
+                            shops = [
+                                ...shops,
+                                await this.getShop(res[i].id),
+                            ]
+                        }
+    
+                        resolve(shops);
+                    } catch(err2) {
+                        reject(err2);
+                    }
+                }
+            });
+        });
+    }
+
+    /**
      * Gets a shop via shop link
      * @param {string} link 
      * @returns {Promise<Shop>}
