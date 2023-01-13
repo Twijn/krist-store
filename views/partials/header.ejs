@@ -4,7 +4,7 @@
 
         <nav>
             <a href="/"<%- (active === "home" ? ' class="active"' : '') %>><i class="fa-solid fa-house-user"></i> Homepage</a><!--
-        --><a href="/item/all"<%- (active === "items" ? ' class="active"' : '') %>><i class="fa-solid fa-boxes-stacked"></i> Items</a><!--
+        --><a href="/product/all"<%- (active === "products" ? ' class="active"' : '') %>><i class="fa-solid fa-boxes-stacked"></i> Products</a><!--
         --><a href="/shop/all"<%- (active === "shops" ? ' class="active"' : '') %>><i class="fa-solid fa-shop"></i> Shops</a><!--<% if (!locals.user) { %>
         --><a href="/login"<%- (active === "login" ? ' class="active"' : '') %>><i class="fa-solid fa-right-to-bracket"></i> Login</a><% } else { %>
         --><a href="/account" class="account<%- (active === "account" ? ' active' : '') %>"><img src="<%= user.avatar %>" alt="Avatar for <%= user.discord.name %>"></a><% } %>

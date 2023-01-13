@@ -4,7 +4,7 @@ const router = express.Router();
 const con = require("../database");
 
 const homepage = require("./homepage");
-const item = require("./item/");
+const product = require("./product/");
 const shop = require("./shop/");
 const account = require("./account/");
 const login = require("./login");
@@ -36,7 +36,7 @@ router.use((req, res, next) => {
 });
 
 router.use(homepage);
-router.use("/item", item);
+router.use("/product", product);
 router.use("/shop", shop);
 router.use("/account", account);
 
