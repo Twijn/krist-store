@@ -36,6 +36,7 @@ class API {
                             shop.themeColor,
                             shop.remote == 1,
                             shop.dispense == 1,
+                            shop.node == 1,
                             new PayoutInformation(
                                 shop.payoutAddress,
                                 shop.payoutFrequency,

@@ -64,10 +64,16 @@ class Shop {
     remote;
 
     /**
-     * Is this configured to be a dispensing shop (configured via other shop software)?
+     * Is this configured to be a dispensing shop?
      * @type {boolean}
      */
     dispense;
+
+    /**
+     * Is this configured to connect to krist.store nodes?
+     * @type {boolean}
+     */
+    node;
 
     /**
      * Payout information for this shopfront
@@ -87,9 +93,10 @@ class Shop {
      * @param {string} themeColor 
      * @param {boolean} remote 
      * @param {boolean} dispense 
+     * @param {boolean} node 
      * @param {PayoutInformation} payout 
      */
-    constructor(id, link, owner, kristName, tagline, name, location, themeColor, remote, dispense, payout) {
+    constructor(id, link, owner, kristName, tagline, name, location, themeColor, remote, dispense, node, payout) {
         this.id = id;
         this.link = link;
         this.owner = owner;
@@ -100,6 +107,7 @@ class Shop {
         this.themeColor = themeColor;
         this.remote = remote;
         this.dispense = dispense;
+        this.node = node;
         this.payout = payout;
     }
 
